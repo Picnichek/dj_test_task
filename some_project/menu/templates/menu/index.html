@@ -1,0 +1,23 @@
+{% load custom_tags %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    {% if menus %}
+      <ul>
+        {% for menu in menus %}
+          <li>
+            <a href="{{ menu.get_absolute_url }}">{{ menu.name }}</a>
+            {% if main_menu %}
+              {% if main_menu.menu_name == menu.name %}
+                {% draw_menu main_menu %}
+              {% endif %}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </body>
+</html>
